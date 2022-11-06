@@ -1,22 +1,43 @@
+# Wallhaven 壁纸站接口
 
-Application created by [ThinkJS](http://www.thinkjs.org)
+本项目基于Nodejs编写，提供Docker支持！可自行打包成镜像使用！
 
-## Install dependencies
+# 如何使用
 
-```
-npm install
-```
+## 常规方式
 
-## Start server
+* 拉取项目
+* 输入 `yarn` 或者 `npm install` 安装依赖包
+* 输入 `yarn run start` 或 `npm run start` 启动项目
+* 打开：[http://127.0.0.1:8360](http://127.0.0.1:8360) 开始使用！
 
-```
-npm start
-```
+## 容器方式
 
-## Deploy with pm2
+* 拉取项目
+* 打包成容器镜像
+* 基于该镜像运行容器
+* 完事
 
-Use pm2 to deploy app on production enviroment.
+# 接口规则
 
-```
-pm2 startOrReload pm2.json
-```
+## 基础字段
+
+* data：结果
+* code：状态码
+  * 200 = 请求成功
+  * -1 = 请求失败
+* msg：请求失败的时候错误信息
+
+## 包含接口
+
+### 壁纸搜索
+
+* http://localhost:8360/wallhaven/search
+* 等价于：https://wallhaven.cc/search
+* 参数：同官方网站
+
+### 随机壁纸
+
+* http://localhost:8360/wallhaven/random
+* 等价于：https://wallhaven.cc/random
+* 参数：同官方网站
