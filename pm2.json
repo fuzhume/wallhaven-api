@@ -1,0 +1,15 @@
+{
+  "apps": [{
+    "name": "v1",
+    "script": "production.js",
+    "cwd": "D:\Projects\WebstormProjects\wallhaven-api\v1",
+    "exec_mode": "fork",
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+      
+    }
+  }]
+}
