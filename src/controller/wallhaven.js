@@ -1,25 +1,53 @@
 const Base = require('./base.js');
 const {decodeResult2Json} = require("../util/wallhaven");
 
+const baseUrl = "https://wallhaven.cc";
+
 module.exports = class extends Base {
     /**
-     * 壁纸搜索
+     * 最新壁纸
      * @returns {Promise<void>}
      */
-    async searchAction() {
+    async latestAction() {
         let {ctx} = this;
         let {request} = ctx;
 
-        let url = "https://wallhaven.cc/search";
+        let url = `${baseUrl}/latest`;
         let query = request.query || {};
 
-        if (Object.keys(query).length === 0) {
-            ctx.body = {
-                code: -1,
-                msg: "缺少必要的过滤条件"
-            };
-            return;
+        ctx.body = {
+            code: 200,
+            data: await decodeResult2Json(url, query)
         }
+    }
+
+    /**
+     * 热门壁纸
+     * @returns {Promise<void>}
+     */
+    async hotAction() {
+        let {ctx} = this;
+        let {request} = ctx;
+
+        let url = `${baseUrl}/hot`;
+        let query = request.query || {};
+
+        ctx.body = {
+            code: 200,
+            data: await decodeResult2Json(url, query)
+        }
+    }
+
+    /**
+     * 排行榜壁纸
+     * @returns {Promise<void>}
+     */
+    async toplistAction() {
+        let {ctx} = this;
+        let {request} = ctx;
+
+        let url = `${baseUrl}/toplist`;
+        let query = request.query || {};
 
         ctx.body = {
             code: 200,
@@ -35,21 +63,31 @@ module.exports = class extends Base {
         let {ctx} = this;
         let {request} = ctx;
 
-        let url = "https://wallhaven.cc/random";
+        let url = `${baseUrl}/random`;
         let query = request.query || {};
-
-        if (Object.keys(query).length === 0) {
-            ctx.body = {
-                code: -1,
-                msg: "缺少必要的过滤条件"
-            };
-            return;
-        }
 
         ctx.body = {
             code: 200,
             data: await decodeResult2Json(url, query)
         }
     }
+
+    /**
+     * 壁纸搜索
+     * @returns {Promise<void>}
+     */
+    async searchAction() {
+        let {ctx} = this;
+        let {request} = ctx;
+
+        let url = `${baseUrl}/search`;
+        let query = request.query || {};
+
+        ctx.body = {
+            code: 200,
+            data: await decodeResult2Json(url, query)
+        }
+    }
+
 
 }

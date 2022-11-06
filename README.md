@@ -30,14 +30,4 @@
 
 ## 包含接口
 
-### 壁纸搜索
-
-* http://localhost:8360/wallhaven/search
-* 等价于：https://wallhaven.cc/search
-* 参数：同官方网站
-
-### 随机壁纸
-
-* http://localhost:8360/wallhaven/random
-* 等价于：https://wallhaven.cc/random
-* 参数：同官方网站
+![](www/static/image/img.png)
